@@ -1,0 +1,83 @@
+:host
+{
+    width: 100%;
+}
+
+.raspored
+{
+    justify-content: space-around;
+}
+
+.false
+{
+    display: none;
+}
+
+.true
+{
+    display: contents;
+}
+/* 
+.responsive-filteri
+{
+    display: flex;
+    justify-content: space-between;
+} */
+
+.filteri
+{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 800px)
+{
+    .filteri
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-right: 20px;
+    }
+    
+}
+
+input[type="checkbox"]
+{
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(0.1em);
+    display: grid;
+    place-content: center;
+    margin-right: 10px;
+} 
+
+input[type="checkbox"]::before
+{
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #9E5573;
+    background-color: CanvasText;
+} 
+
+input[type="checkbox"]:checked::before
+{
+    transform: scale(1);
+}
+
+.input-style
+{
+    display: flex;
+    flex-direction: row;
+}

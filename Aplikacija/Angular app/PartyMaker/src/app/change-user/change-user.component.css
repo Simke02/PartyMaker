@@ -1,0 +1,85 @@
+.responsive-div {
+  padding-left: 100px; /* Default padding for all screen sizes */
+  padding-right: 100px; /* Default padding for all screen sizes */
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  /* Media queries for different screen sizes */
+  @media screen and (max-width: 600px) {
+    padding-left: 10px; /* Adjusted padding for smaller screens */
+    padding-right: 10px; /* Adjusted padding for smaller screens */
+  }
+
+  @media screen and (max-width: 400px) {
+    padding-left: 5px; /* Adjusted padding for even smaller screens */
+    padding-right: 5px; /* Adjusted padding for even smaller screens */
+  }
+}
+
+.glavni-rasp{
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+}
+
+
+.sam-div{
+  margin-bottom: 20px;
+}
+
+
+#phone,#zip,#new-password,#curr-password,#confirm-password
+{
+  margin-top: 10px;
+}
+
+@media (max-width: 575px)
+{
+.glavni-rasp
+{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-bottom: 30px;
+}
+
+.sam-div
+{
+  margin-bottom: 10px;
+}
+
+.form-group
+{
+  margin: 0;
+}
+
+.dugmad
+{
+  margin-top: 10px;
+}
+
+#phone,#zip,#new-password,#curr-password,#confirm-password
+{
+  margin-top: 0px;
+}
+}
+
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+:host{
+  width: 100%;
+  max-width: 550px;
+}
+
+.dugmad
+{
+  width: 100%;
+  padding-left:10px;
+  padding-right: 10px;
+  display: flex;  
+  justify-content: space-between;
+  align-items: center;
+}

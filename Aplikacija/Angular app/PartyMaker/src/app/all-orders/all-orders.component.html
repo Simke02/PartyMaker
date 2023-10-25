@@ -1,0 +1,28 @@
+<div class="table-div">
+    <table class="table">
+        <thead>
+            <td>ID</td>
+            <td>{{!serbian?'Ime':'Name'}}</td>
+            <td>{{!serbian?'Datum':'Date'}}</td>
+            <td>Status</td>
+            <td>{{!serbian?'Ukupno':'Total'}}</td>
+            <td>{{!serbian?'Pregled':'Overview'}}</td>
+        </thead>
+        <tbody *ngFor="let nardz of narudzbine; index as i">
+            <td>{{nardz.id}}</td>
+            <td>{{nardz.licnoIme + " "+ nardz.prezime}}</td>
+            <td>{{vremena[i]}}</td>
+            <td>
+                <select #stat (change)="PriPromeni(nardz, stat.value)"  class="btn btn-outline-darker-pink">
+                    <option *ngFor="let st of status"
+                        [selected]="st===status[nardz.statusPorudzine]? true: null">{{st}}
+                    </option>
+                </select>
+            </td>
+            <td>{{nardz.suma}}</td>
+            <td>
+                <div class="text-center"><a class="btn btn-outline-darker-pink" [routerLink]="['/details-order', nardz.id]">{{!serbian?'Detalji':'Details'}}</a></div>
+            </td>
+        </tbody>
+    </table>
+</div>

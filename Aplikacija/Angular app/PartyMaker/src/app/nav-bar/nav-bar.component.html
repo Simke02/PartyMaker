@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light-pink fixed-top nav-bar-border">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand text-dark" routerLink="/">
+        <img src="../../assets/images/logo-32.png">
+            Party Maker
+        </a>
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
+        <button class="navbar-toggler" type="button" (click)="toggleNavBarShow()"><span class="navbar-toggler-icon"></span></button>
+        <div class="{{navBarToggle}}" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li> -->
+                <li class="nav-item"><a class="nav-link" routerLink="/about">{{!serbian?'O nama':'About us'}}</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{!serbian?'Proizvodi':'Products'}}</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/alkoholna" (click)="toggleNavBarShow()">{{!serbian?'Alkoholna pića':'Alcoholic drinks'}}</a></li>
+                        <li><a class="dropdown-item" routerLink="/bezalkoholna" (click)="toggleNavBarShow()">{{!serbian?'Bezalkoholna pića':'Nonalcoholic drinks'}}</a></li>
+                        <!-- <li><hr class="dropdown-divider" /></li> -->
+                        <li><a class="dropdown-item" routerLink="/rekviziti" (click)="toggleNavBarShow()">{{!serbian?'Rekviziti':'Items'}}</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="isAdmin" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/addAdmin" (click)="toggleNavBarShow()">{{!serbian?'Krairaj admina':'Create admin'}}</a></li>
+                        <li><a class="dropdown-item" routerLink="/add-product" (click)="toggleNavBarShow()">{{!serbian?'Dodaj novi proizvod':'Add new product'}}</a></li>
+                        <li><a class="dropdown-item" routerLink="/all-orders" (click)="toggleNavBarShow()">{{!serbian?'Sve narudžbine':'All orders'}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!--Ovde treba samo da se lepo rasporede dugmici-->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ms-lg-4">
+
+                <li>
+                    <button [disabled]="!serbian" (click)="switchLanguage()" class = "btn-borderless">
+                        <img src="../../assets/images/srb-ico.png" alt="">
+                    </button>
+                    <button [disabled]="serbian" (click)="switchLanguage()" class = "btn-borderless">
+                        <img src="../../assets/images/eng-ico.png" alt="">
+                    </button>
+                    
+                </li>
+                <!--DUGME ZA PRIJAVU-->
+                <li>
+                    <a class="nav-link" role="button" routerLink="/login" *ngIf="!isAuthenticated" (click)="toggleNavBarShow()"> 
+                        {{!serbian?'Prijava':'Log in'}}   
+                    </a>
+                </li>
+               
+                <!--Opcije korisnika-->
+                <li *ngIf="isAuthenticated" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{name}}</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li *ngIf="!isAdmin"><a class="dropdown-item" routerLink="/change-user" (click)="toggleNavBarShow()">{{!serbian?'Izmeni podatke':'Change info'}}</a></li>
+                        <li *ngIf="isAdmin"><a class="dropdown-item" routerLink="/change-admin" (click)="toggleNavBarShow()">{{!serbian?'Izmeni podatke':'Change info'}}</a></li>
+                        <li *ngIf="!isAdmin"><a class="dropdown-item" routerLink="/user-orders" (click)="toggleNavBarShow()">{{!serbian?'Moje narudžbine':'My orders'}}</a></li>
+                        <li><a class="dropdown-item" (click)="onLogout()" (click)="toggleNavBarShow()">{{!serbian?'Odjavi se':'Log out'}}</a></li>
+                    </ul>
+                </li>
+
+                <!--Korpa-->
+                <a class="nav-link" role="button" routerLink="/cart" (click)="toggleNavBarShow()"> 
+                    <i class="bi-cart-fill me-1"></i>
+                    {{!serbian?'Korpa':'Cart'}}    
+                    <span class="badge bg-dark-pink text-white ms-1 rounded-pill">{{cartN}}</span>
+                </a>
+            </ul>
+        </div>
+    </div>
+  </nav>

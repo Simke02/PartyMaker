@@ -1,0 +1,217 @@
+<div class="row" style="width: 100%; justify-content: center;">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div class="alert alert-danger" *ngIf="error">
+      <p>
+        {{error}}
+      </p>
+    </div>
+    <div *ngIf="isLoading" style="text-align: center;">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+
+    <!--ovde krece forma-->
+    <div class="container" *ngIf="!isLoading">
+      <div class="row" style="width: 100%; justify-content: center;">
+          <div class="col-xs-12 col-md-6 col-md-offset-3" style="min-width:400px ">
+              <div class="account-box" *ngIf="isLoginMode">
+                  <div class="logo ">
+                      <img src="../../assets/images/logo-48.png" alt=""/>
+                      <p class="text-logo">{{!serbian?'Prijavi se na Party Maker':'Log in to Party Maker'}}</p>
+                  </div>
+                    <div style="text-align: center;">
+                      <form [formGroup]="signinForm" (ngSubmit)="onSubmitSignin()" *ngIf="!isLoading">
+                          <div class="form-group">
+                            <input
+                              formControlName="email" 
+                              type="email" 
+                              id="email"
+                              class="form-control" 
+                              placeholder="Email"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <input
+                            placeholder="{{!serbian?'Lozinka':'Password'}}"
+                            type="password"  
+                            id="password" 
+                            class="form-control"
+                            formControlName="password"
+                            />
+                          </div>
+                          <button class="btn btn-outline-green dis-dugme" type="submit" [disabled]="!signinForm.valid">
+                            {{!serbian?'Prijavi se':'Log in'}}
+                          </button>
+                        </form>
+                      
+                      <div class="or-box row-block">
+                        <div class="row">
+                            <div class="div-spama">
+                              <spam class="or">{{!serbian?'ILI':"OR"}}</spam> <!--Unesi ovde da na dugme radi sign up-->
+                            </div>
+                            <div class="col-md-12 row-block">
+                                <button  class="btn btn-outline-darker-pink"
+                                (click)="onSwitchMode()" type="button" >
+                                {{!serbian?"Kreiraj Novi Nalog":"Create New Account"}}
+                              </button>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="account-box" *ngIf="!isLoginMode">
+                  <div class="logo">
+                    <img src="../../assets/images/logo-48.png" alt=""/>
+                    <p class="text-logo">{{!serbian?'Pravljenje naloga':'Account creation'}}
+                  </div>
+                <div style="text-align: center;">
+                  <form [formGroup]="signupForm" (ngSubmit)="onSubmitSignup()" *ngIf="!isLoading"
+                  >
+                 
+                  <div id="name_lastname">
+                    <div class="form-group width-auto" >  
+                      <input
+                        type="text" 
+                        id="name"
+                        class="form-control" 
+                        formControlName="name"
+                        placeholder="{{!serbian?'Lično ime':'Name'}}"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <input 
+                      type="text" 
+                      id="lastName"
+                      class="form-control" 
+                      formControlName="lastName"
+                      placeholder="{{!serbian?'Prezime':'Last Name'}}"
+                    />
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                    <input
+                      name="address" 
+                      type="text" 
+                      id="address"
+                      class="form-control" 
+                      formControlName="address" 
+                      placeholder="{{!serbian?'Adresa':'Address'}}"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      name="city" 
+                      type="text" 
+                      id="city"
+                      class="form-control" 
+                      formControlName="city" 
+                      placeholder="{{!serbian?'Grad':'City'}}"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      name="state" 
+                      type="text" 
+                      id="state"
+                      class="form-control" 
+                      formControlName="state" 
+                      placeholder="{{!serbian?'Država':'State'}}"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      name="phone" 
+                      type="text" 
+                      id="phone"
+                      class="form-control" 
+                      formControlName="phone"
+                      placeholder="{{!serbian?'Broj telefona':'Phone number'}}"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      name="zip" 
+                      type="text" 
+                      id="zip"
+                      class="form-control" 
+                      formControlName="zip" 
+                      placeholder="{{!serbian?'Poštanski Broj':'Zip code'}}"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      name="email" 
+                      type="text" 
+                      id="email"
+                      class="form-control" 
+                      formControlName="email"
+                      placeholder="Email"
+                    />
+                  </div>
+                
+                  <div class="form-group" >
+                    <input
+                    placeholder="{{!serbian?'Lozinka':'Password'}}"
+                    type="password"  
+                    id="password" 
+                    class="form-control"
+                    formControlName="password"
+                   
+                    />
+                  </div>
+                  <!--
+
+                    <div class="form-group">
+                      <input
+                      placeholder="Confirm Password"
+                      type="password"  
+                      id="confirm-password" 
+                      class="form-control"
+                      formControlName="confirm-password"
+                      />
+                    </div>
+                  -->
+                
+                 
+                 <!--PROVERITI IZ KOG RAZLOGA NE DOZVOLJAVA DA -->
+                  
+                    <button class="btn btn-outline-green dis-dugme" type="submit" [disabled]="!this.signupForm.valid">
+                        {{!serbian?'Kreiraj Novi Nalog':'Create New Account'}}</button>
+                    </form>
+                    
+                    <div class="or-box row-block">
+                      <div class="row">
+                        <div class="div-spama">
+                          <spam class="or">{{!serbian?'ILI':"OR"}}</spam> <!--Unesi ovde da na dugme radi sign up-->
+                        </div>
+                          <div class="col-md-12 row-block">
+                              <button  class="btn btn-outline-darker-pink"
+                              (click)="onSwitchMode()" type="button">
+                              {{!serbian?"Pređi na prijavu":"Switch to log in"}}
+                            </button>
+                          </div>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+<!--ovo pomera celu formu na stranu-->
+<!--link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"-->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>

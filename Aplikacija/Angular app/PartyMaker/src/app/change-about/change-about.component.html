@@ -1,0 +1,105 @@
+<div class="glavni-rasp">
+  <form [formGroup]="changeAboutForm" (ngSubmit)="changeAbout()">
+
+    <div class="prvi">
+      <div class="parag1">
+        <textarea 
+        name="parag1" 
+        id="parag1" 
+        cols="30" 
+        rows="10" 
+        formControlName="parag1">
+      </textarea>
+      </div>
+
+      <div class="image1">
+        <div class="form-group row sam-div" style="margin-top: 20px;">
+          <label for="iamge1"
+           class="col-sm-2 col-form-label">
+           {{!serbian?'putanja':'Path'}}
+         </label>
+          <div class="col-sm-10">
+            <input type="text"
+            class="form-control" 
+            id="iamge1" 
+            placeholder="{{!serbian?'Putanja':'Path'}}"
+            formControlName="image1">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drugi">
+      <div class="parag2">
+        <textarea 
+        name="parag2" 
+        id="parag2" 
+        cols="30" 
+        rows="10" 
+        formControlName="parag2">
+      </textarea>
+      
+      </div>
+
+      <div class="image2">
+        <div class="form-group row sam-div" style="margin-top: 20px;">
+          <label for="iamge2"
+           class="col-sm-2 col-form-label">
+           {{!serbian?'putanja':'Path'}}
+         </label>
+          <div class="col-sm-10">
+            <input type="text"
+            class="form-control" 
+            id="iamge2" 
+            placeholder="{{!serbian?'Putanja':'Path'}}"
+            formControlName="image2">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="treci">
+      <div class="parag3">
+        <textarea 
+        name="parag3" 
+        id="parag3" 
+        cols="30" 
+        rows="10" 
+        formControlName="parag3">
+      </textarea>
+      </div>
+
+      <div class="image23">
+        <div class="form-group row sam-div" style="margin-top: 20px;">
+          <label for="iamge3"
+           class="col-sm-2 col-form-label">
+           {{!serbian?'putanja':'Path'}}
+         </label>
+          <div class="col-sm-10">
+            <input type="text"
+            class="form-control" 
+            id="iamge3" 
+            placeholder="{{!serbian?'Putanja':'Path'}}"
+            formControlName="image3">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+<!-- Submit -->
+<div class="form-group row sam-div">
+  <div class="col-sm-10 dugmad">
+    <button [disabled]="!
+    changeAboutForm.valid"
+    type="submit" class="btn btn-outline-green" (click)="changeAbout()" >{{!serbian?'Izmeni':'Change'}}</button>
+
+    <button type="button" class="btn btn-outline-warning" (click)="odustani()">{{!serbian?'Odustani':'Quit'}}</button>
+    
+  </div>
+
+</div>

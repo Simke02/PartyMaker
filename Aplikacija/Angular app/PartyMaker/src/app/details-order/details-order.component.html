@@ -1,0 +1,54 @@
+<div class="table-div">
+    <table class="table">
+        <thead>
+            <td>{{!serbian?'Naziv':'Name'}}</td>
+            <td>{{!serbian?'Kolicina':'Quantity'}}</td>
+            <td>{{!serbian?'Cena':'Price'}}</td>
+        </thead>
+        <tbody *ngFor="let proizvod of narudzbina.sviProizvodiNarudzbine; index as i">
+            <td>{{proizvodi[i].naziv}}</td>
+            <td>{{proizvod.kolicina}}</td>
+            <td>{{proizvod.ukupnaCena}}</td>            
+        </tbody>
+        <td id="nevidljivo"></td>
+        <th id="poravnanje">{{!serbian?"Ukupna cena:":"Total price:"}}</th>
+        <td>{{narudzbina.suma}}</td>
+    </table>
+</div>
+
+<div class="table-div">
+    <table class="table-customer">
+        <tr>
+            <th>{{!serbian?"Ime:":"Name:"}}</th>
+            <td>{{narudzbina.licnoIme}}</td>
+        </tr>
+        <tr>
+            <th>{{!serbian?"Prezime:":"Last name:"}}</th>
+            <td>{{narudzbina.prezime}}</td>
+        </tr>
+        <tr>
+            <th>{{!serbian?"Email:":"Email:"}}</th>
+            <td>{{narudzbina.emailKup}}</td>
+        </tr>
+        <tr>
+            <th>{{!serbian?"Broj telefona:":"Phone number:"}}</th>
+            <td>{{narudzbina.brojTelefona}}</td>
+        </tr>
+        <tr>
+            <th>{{!serbian?"Država:":"State:"}}</th>
+            <td>{{narudzbina.drzava}}</td>
+        </tr>
+        <tr>
+            <th>{{!serbian?"Grad:":"City:"}}</th>
+            <td>{{narudzbina.grad}}</td>
+        </tr>
+        <tr>
+            <th>{{!serbian?"Poštanski broj:":"Zip code:"}}</th>
+            <td>{{narudzbina.postanskiBroj}}</td>
+        </tr>
+        <tr>
+            <th>{{!serbian?"Adresa:":"Adress:"}}</th>
+            <td>{{narudzbina.adresa}}</td>
+        </tr>
+    </table>
+</div>

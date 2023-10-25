@@ -1,0 +1,150 @@
+<div class="glavni-rasp">
+  <form [formGroup]="addProductForm" (ngSubmit)="DodajProizvod()">
+<!-- Proizvod -->
+    <div formGroupName="proizvod">
+     <div class="form-group row sam-div" style="margin-top: 20px;">
+       <label for="naziv" class="col-sm-2 col-form-label">{{!serbian?'Naziv':'Name'}}</label>
+       <div class="col-sm-10">
+         <input type="text" class="form-control" id="naziv" placeholder="{{!serbian?'Naziv':'Name'}}"
+         formControlName="naziv">
+         <!-- <span *ngIf="!addProductForm.get('proizvod.naziv').valid && addProductForm.get('proizvod.naziv').touched"
+         class="help-block">Uneti validan naziv</span> -->
+       </div>
+     </div>
+     <div class="form-group row sam-div">
+       <label for="proizvodjac" class="col-sm-2 col-form-label">{{!serbian?'Proizvođač':'Brand'}}</label>
+       <div class="col-sm-10">
+         <input type="text" class="form-control" id="proizvodjac" placeholder="{{!serbian?'Proizvođač':'Brand'}}"
+         formControlName="proizvodjac">
+       </div>
+     </div>
+     <div class="form-group row sam-div">
+         <label for="cena" class="col-sm-2 col-form-label">{{!serbian?'Cena':'Price'}}</label>
+         <div class="col-sm-10">
+           <input type="number" class="form-control" id="cena" placeholder="{{!serbian?'Cena':'Price'}}"
+           formControlName="cena">
+         </div>
+     </div>
+     <div class="form-group row sam-div">
+         <label for="opis" class="col-sm-2 col-form-label">{{!serbian?'Opis':'Description'}}</label>
+         <div class="col-sm-10">
+           <input type="text" class="form-control" id="opis" placeholder="{{!serbian?'Opis':'Description'}}"
+           formControlName="opis">
+         </div>
+     </div>
+     <div class="form-group row sam-div">
+         <label for="kolicina" class="col-sm-2 col-form-label">{{!serbian?'Količina':'Quantity'}}</label>
+         <div class="col-sm-10">
+           <input type="number" class="form-control" id="kolicina" placeholder="{{!serbian?'Količina':'Quantity'}}"
+           formControlName="kolicina">
+         </div>
+     </div>
+     <div class="form-group row sam-div">
+         <label for="slika" class="col-sm-2 col-form-label">{{!serbian?'Slika':'Image'}}</label>
+         <div class="col-sm-10">
+           <input type="text" class="form-control" id="slika" placeholder="{{!serbian?'Slika':'Image'}}"
+           formControlName="slika">
+         </div>
+     </div>
+    </div>
+<!-- Selekcija -->
+    <div class="form-group row sam-div selekcija-div">
+        <label class="col-sm-2 col-form-label">{{!serbian?'Tip rekvizita':'Item type'}}</label>  
+        <div class="col-sm-10">
+          <select class="form-control" id="selekcija" formControlName="selekcija"
+            (change)="onSelectChange()">
+              <option value="1">{{!serbian?'Rekviziti':'Props'}}</option>
+              <option value="2">{{!serbian?'Alkoholna pića':'Alcoholic drinks'}}</option>
+              <option value="3">{{!serbian?'Bezalkoholna pića':'Nonalcoholic drinks'}}</option>
+          </select>
+        </div>
+    </div>
+<!-- Rekviziti -->
+    <div *ngIf="addProductForm.get('selekcija')?.value === '1'" formGroupName="rekvizit">
+      <div class="form-group row sam-div">
+        <label for="tip" class="col-sm-2 col-form-label">{{!serbian?'Tip rekvizita':'Item type'}}</label>
+        <div class="col-sm-10 pd-10 cntr">
+          <!-- <input type="number" class="form-control" id="tip" placeholder="Tip rekvizita"
+          formControlName="tip"> -->
+          <select class="form-control" id="tip" formControlName="tip">
+            <option value="-1">{{!serbian?'Izaberi tip':'Choose type'}}</option>
+            <option *ngFor="let re of keysR()">{{re}}</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="uspeh">
+        <span>{{!serbian?'Uspeno ste dodali proizvod:':'You have successfully added product: '}} {{rekv.naziv}}</span>
+      </div>
+    </div>
+<!-- Alkoholna -->
+    <div  *ngIf="addProductForm.get('selekcija')?.value === '2'" formGroupName="alkoholna">
+      <div class="form-group row sam-div">
+        <label for="litraza" class="col-sm-2 col-form-label">{{!serbian?'Litraža':'literage'}}</label>
+        <div class="col-sm-10 pd-10 cntr">
+          <input type="number" class="form-control" id="litraza" placeholder="{{!serbian?'Litraža':'literage'}}"
+          formControlName="litraza">
+        </div>
+      </div>
+      <div class="form-group row sam-div">
+        <label for="vrsta" class="col-sm-2 col-form-label">{{!serbian?'Vrsta alkohola':'Alcohol type'}}</label>
+        <div class="col-sm-10 pd-10 cntr">
+          <!-- <input type="number" class="form-control" id="vrsta" placeholder="Vrsta alkohola"
+          formControlName="vrsta"> -->
+          <select class="form-control" id="vrsta" formControlName="vrsta">
+            <option value="-1">{{!serbian?'Izaberi vrstu':'Choose type'}}</option>
+            <option *ngFor="let ae of keysA()">{{ae}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row sam-div">
+        <label for="procenat" class="col-sm-2 col-form-label">{{!serbian?'Procenat alkohola':'Alcohol percentage'}}</label>
+        <div class="col-sm-10 pd-10 cntr">
+          <input type="number" class="form-control" id="procenat" placeholder="{{!serbian?'Procenat alkohola':'Alcohol percentage'}}"
+          formControlName="procenat">
+        </div>
+      </div>
+      <div *ngIf="uspeh">
+        <span>{{!serbian?'Uspeno ste dodali proizvod:':'You have successfully added product: '}} {{alk.naziv}}</span>
+      </div>
+    </div>
+<!-- Bezalkoholna -->
+    <div *ngIf="addProductForm.get('selekcija')?.value === '3'" formGroupName="bezalkoholna" >
+      <div class="form-group row sam-div">
+        <label for="litraza" class="col-sm-2 col-form-label">{{!serbian?'Litraža':'literage'}}</label>
+        <div class="col-sm-10 pd-10 cntr">
+          <input type="number" class="form-control" id="litraza" placeholder="{{!serbian?'Litraža':'literage'}}"
+          formControlName="litraza">
+        </div>
+      </div>
+      <div class="form-group row sam-div">
+        <label for="gazirano" class="col-sm-2 col-form-label">{{!serbian?'Gazirano':'Carbonated'}}</label>
+        <div class="col-sm-10 pd-10 cntr">
+          <input type="checkbox" id="gazirano" formControlName="gazirano">
+        </div>
+      </div>
+      <div class="form-group row sam-div">
+        <label for="ukus" class="col-sm-2 col-form-label">{{!serbian?'Ukus':'Flavor'}}</label>
+        <div class="col-sm-10 pd-10 cntr">
+          <!-- <input type="number" class="form-control" id="ukus" placeholder="Ukus"
+          formControlName="ukus"> -->
+          <select class="form-control" id="ukus" formControlName="ukus">
+            <option value="-1">{{!serbian?'Izaberi ukus':'Choose flavor'}}</option>
+            <option *ngFor="let be of keysB()">{{be}}</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="uspeh">
+        <span>{{!serbian?'Uspeno ste dodali proizvod:':'You have successfully added product: '}} {{bezalk.naziv}}</span>
+      </div>
+    </div>
+<!-- Submit -->
+    <div class="form-group row sam-div">
+      <div class="col-sm-10 dugmad">
+        <button [disabled]="!addProductForm.valid"
+        type="submit" class="btn btn-outline-green dis-dugme">{{!serbian?'Dodaj':'Add'}}</button>
+        <button type="button" class="btn btn-outline-red" (click)="Odustani()">
+          {{!serbian?'Odustani':'Quit'}}</button>
+      </div>
+    </div>
+  </form>
+</div>

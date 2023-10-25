@@ -1,0 +1,60 @@
+<div class="prikaz-proizvoda">
+    <div class="filteri">
+        
+        <div class="chk-boxevi">
+            <button class="btn btn-outline-darker-pink prikazi-dugme" (click)="toggleShowFilters()">{{!serbian?"Prikaži filtere":"Show filters"}}</button>
+            <div class="responsive-filteri" [hidden]="isShowFilters">
+                <div>
+                    <button class="btn btn-outline-darker-pink prikazi-dugme" (click)="toggleShowBrand()">{{!serbian?'Proizvođač:':'Brand:'}}</button>
+                    <div *ngFor="let proiz of proizvodjaci; let i = index" [hidden]="isShowBrand">
+                        <div class ="input-style">
+                            <input type="checkbox" value="{{i}}" (change)="priFiltriranjuP(i, $event.target.checked)"> {{proiz}}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-outline-darker-pink prikazi-dugme" (click)="toggleShowType()">{{!serbian?'Vrste alkohola:':'Drink types:'}}</button>
+                    <div *ngFor="let vrst of vrsteString; let i = index" [hidden]="isShowType">
+                        <div class ="input-style">
+                            <input type="checkbox" value="{{i}}" (change)="priFiltriranjuV(i, $event.target.checked)"> {{vrst}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <select class="btn btn-outline-darker-pink prikazi-dugme" (change)="priSelekciji($event.target.value)">
+                <option value="0">{{!serbian?'Datum dodavanja (stariji)':'Date(oldest first)'}}</option>
+                <option value="1">{{!serbian?'Datum dodavanja (noviji)':'Date(newest first)'}}</option>
+                <option value="2">{{!serbian?'Cena (najviša)':'price (highest)'}}</option>
+                <option value="3">{{!serbian?'Cena (najniža)':'price (lowest)'}}</option>
+                <option value="4">{{!serbian?'Naziv (A-Z)':'Name (A-Z)'}}</option>
+                <option value="5">{{!serbian?'Naziv (Z-A)':'Name (Z-A)'}}</option>
+            </select>
+        </div>
+    </div>    
+    <div class="row gx-4 gx-lg-5 red-kol-1 red-kol-2 red-kol-md-3 red-kol-xxl-4 raspored" style="margin-top: 10px;">
+        <div *ngFor="let alk of alkoholi|filter:vrsteFEnum:'vrsta'|filter:proizvodjaciF:'proizvodjac'|sort:[imeAtributa, redosled]" class="col mb-5">
+            <div class="card h-100">
+                <!-- Product image-->
+                <img style="height:100%;" class="card-img-top" [src]="alk.slika" alt="..." [routerLink]="['/details', alk.id, 'alkohol']" (click)="priKlikuDetalji(alk)"/>
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder">{{alk.naziv}}</h5>
+                        <!-- Product price-->
+                        {{!serbian? alk.cena + ' RSD':alk.cena/100 + ' EUR'}}
+                    </div>
+                </div>
+                <!-- Product actions-->
+                <div class="footer-kartice p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center"><a class="btn btn-outline-darker-pink" [routerLink]="['/details', alk.id, 'alkohol']" (click)="priKlikuDetalji(alk)">{{!serbian?'Detalji':'Details'}}</a></div>
+                    <div *ngIf="isAdmin" class="text-center"><a class="btn btn-outline-warning"[routerLink]="['/change-product',alk.id,'alkohol']" (click)="priKlikuDetalji(alk)">{{!serbian?'Izmeni':'Change'}}</a></div>
+                    <div *ngIf="isAdmin" class="text-center"><a class="btn btn-outline-red" (click)="priKlikuDelete(alk.id)">{{!serbian?'Obriši':'Delete'}}</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

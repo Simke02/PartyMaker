@@ -1,0 +1,142 @@
+<!-- Carousel slike -->
+<div class="prikaz-str">
+        <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../../assets/images/inout_1440x480.png" class="d-block w-100 img-aspect" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../../assets/images/online-eksluzivne-ponude-15.4.-hero.jpg" class="d-block w-100 img-aspect" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../../assets/images/nestle-baner-30.5-12.6.-hero.jpg" class="d-block w-100 img-aspect" alt="...">
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+
+        </div> -->
+
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="../../assets/images/home-1.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../../assets/images/home-2.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../../assets/images/home-3.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+        <!-- <div class="promo">
+            <img src="../../assets/images/jack-prom.png" class="promo-img">
+
+        </div>
+         -->
+        
+        <div class="most-popular-container">
+            <div class="most-popular-text-container">
+                <h1 class="most-popular-text">{{!serbian?'Najpopularnija alkoholna pića:':'The most popular alcholic drinks:'}}</h1>
+            </div>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4 justify-content-center">
+                <div *ngFor="let alk of alkoholi" class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img style="height:100%;" class="card-img-top img-responsive" [src]="alk.slika" alt="..." [routerLink]="['/details', alk.id, 'alkohol']" (click)="priKlikuDetaljiA(alk)" />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{alk.naziv}}</h5>
+                                <!-- Product price-->
+                                {{!serbian? alk.cena + ' RSD':alk.cena/100 + ' EUR'}}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="footer-kartice p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-darker-pink" [routerLink]="['/details', alk.id, 'alkohol']" (click)="priKlikuDetaljiA(alk)">{{!serbian?'Detalji':'Details'}}</a></div>
+                            <div *ngIf="isAdmin" class="text-center"><a class="btn btn-outline-warning" [routerLink]="['/change-product',alk.id,'alkohol']" (click)="priKlikuDetaljiA(alk)">{{!serbian?'Izmeni':'Change'}}</a></div>
+                            <div *ngIf="isAdmin" class="text-center"><a class="btn btn-outline-red" (click)="priKlikuDeleteA(alk.id)">{{!serbian?'Obriši':'Delete'}}</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="most-popular-text-container">
+                <h1 class="most-popular-text">{{!serbian?'Najpopularnija bezalkoholna pića:':'The most popular non-alcholic drinks:'}}</h1>
+            </div>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4 justify-content-center ">
+                <div *ngFor="let bezalk of bezalkoholna" class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img style="height:100%;" class="card-img-top img-responsive" [src]="bezalk.slika" alt="..." [routerLink]="['/change-product',bezalk.id,'bezalkohol']" (click)="priKlikuDetaljiB(bezalk)"/>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{bezalk.naziv}}</h5>
+                                <!-- Product price-->
+                                <!-- {{bezalk.cena}} RSD -->
+                                {{!serbian? bezalk.cena + ' RSD':bezalk.cena/100 + ' EUR'}}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="footer-kartice p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-darker-pink mt-auto" [routerLink]="['/details', bezalk.id, 'bezalkohol']">{{!serbian?'Detalji':'Details'}}</a></div>
+                            <div *ngIf="isAdmin" class="text-center"><a class="btn btn-outline-warning" [routerLink]="['/change-product',bezalk.id,'bezalkohol']" (click)="priKlikuDetaljiB(bezalk)">{{!serbian?'Izmeni':'Change'}}</a></div>
+                            <div *ngIf="isAdmin" class="text-center"><a class="btn btn-outline-red" (click)="priKlikuDeleteB(bezalk.id)">{{!serbian?'Obriši':'Delete'}}</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="most-popular-text-container">
+                <h1 class="most-popular-text">{{!serbian?'Najpopularniji rekviziti:':'The most popular items:'}}</h1>
+            </div>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4 justify-content-center">
+                <div *ngFor="let rekv of rekviziti" class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img style="height:100%;" class="card-img-top img-responsive" [src]="rekv.slika" alt="..." [routerLink]="['/details', rekv.id, 'rekvizit']" (click)="priKlikuDetaljiR(rekv)"/>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{rekv.naziv}}</h5>
+                                <!-- Product price-->
+                                {{!serbian? rekv.cena + ' RSD':rekv.cena/100 + ' EUR'}}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="footer-kartice p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-darker-pink mt-auto" [routerLink]="['/details', rekv.id, 'rekvizit']" (click)="priKlikuDetaljiR(rekv)">{{!serbian?'Detalji':'Details'}}</a></div>
+                            <div *ngIf="isAdmin" class="text-center"><a class="btn btn-outline-warning" [routerLink]="['/change-product',rekv.id,'rekvizit']" (click)="priKlikuDetaljiR(rekv)">{{!serbian?'Izmeni':'Change'}}</a></div>
+                            <div *ngIf="isAdmin" class="text-center"><a class="btn btn-outline-red" (click)="priKlikuDeleteR(rekv.id)">{{!serbian?'Obriši':'Delete'}}</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

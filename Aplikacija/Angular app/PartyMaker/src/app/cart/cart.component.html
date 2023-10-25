@@ -1,0 +1,53 @@
+<div *ngIf="ukupno != 0" class = "root">
+    <div class = "cart-containter ">
+        <div *ngFor="let proiz of proizvodi; let i = index" class="item" [id]="i">
+                <div class="image-containter">
+                    <img class="slika" alt="a" [src]="proiz.slika">
+                </div>
+
+                <div class="product-details-containter">
+                    <p class = "product-name">{{proiz.naziv}}</p>
+                    <div class ="item-containter">
+                        <!-- <div>
+                            <p>{{!serbian?'Količina':'Quantity'}}:</p>  
+                        </div> -->
+                        <div class = "kolicina">
+                            <button class="btn-pozicija minus" (click)="Smanji(i)">-</button>
+                            <p class = "broj">{{kolicina[i]}}</p>
+                            <button class="btn-pozicija" (click)="Povecaj(i)">+</button>
+                        </div>
+                        <div>
+                            <!-- <p>{{!serbian?'Cena':'Price'}}: {{!serbian? proiz.cena + ' RSD':proiz.cena/100 + ' EUR'}}</p> -->
+                            <p style="margin-top: 10px; font-weight: bold;">{{!serbian? proiz.cena * kolicina[i] + ' RSD': proiz.cena * kolicina[i] / 100 + ' EUR'}}</p>
+
+                        </div>
+                    </div>
+
+                    <!-- <h6 class="blue" (click)="Skini(i)">Clear <i class="fa fa-times-circle-o"></i></h6> -->
+                    <div class="text-left">
+                        <a class="btn-borderless" (click)="Skini(i)"><i class="bi bi-x-lg"></i></a>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class = "total-containter">
+        <div>
+            <div style="margin-bottom: 10px;" class="total-text">
+                <span>{{!serbian?'Ukupno':'Total'}}: {{!serbian? ukupno + ' RSD':ukupno/100 + ' EUR'}}</span>
+            </div>
+            <div class="total-button">
+                <button class="btn btn-outline-green btn-total" routerLink="/order">{{!serbian?'Nastavi':'Continue'}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="ukupno == 0" class="empty-root">
+    <div class="row-cart">
+        <div class="empty-cart-wrapper">
+            <div class="empty-cart"></div>
+            <span class="cart-text">{{!serbian?'Vaša korpa je prazna':'Your cart is empty'}}!</span>
+            <a href="/" role="button" class="cart-text btn-borderless link">{{!serbian?"Vratite se na početnu stranu":"Return to the home page"}}</a>
+        </div>
+    </div>
+
+</div>

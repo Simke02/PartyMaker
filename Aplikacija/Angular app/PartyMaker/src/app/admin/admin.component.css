@@ -1,0 +1,82 @@
+.account-box
+{
+    border: 2px solid #9E5573;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    -o-border-radius: 2px;
+    z-index: 3;
+    font-size: 13px !important;
+    font-family: "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+    background-color: #ffffff;
+    padding: 20px;
+}
+#name,#lastName{
+    max-width: 45%;
+}
+
+#name_lastname{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.logo
+{
+    width: 138px;
+    height: 30px;
+    text-align: center;
+    margin: 10px 0px 27px 40px;
+    background-position: 0px -4px;
+    position: relative;
+}
+.form-group{
+  margin: 10px;
+}
+
+.dugmad
+{
+  padding-left:10px;
+  padding-right: 10px;
+  display: flex;  
+  justify-content: space-between;
+}
+
+.pd-10{
+  padding-right: 10px;
+}
+
+.cntr
+{
+  align-self: center;
+}
+
+#email
+{
+  margin-top:10px;  
+  width: 100%;
+}
+
+.form-control
+{
+  border-color: #9E5573;
+}
+
+.wdth100
+{
+  width:100%;
+  display: flex;
+  justify-content: space-around;
+}
+.account-box .btn:hover
+{
+    color: #fff;
+}
+
+.purple-bg
+{
+    background-color: #6E329D;
+    color: #fff;
+}

@@ -1,0 +1,107 @@
+
+<div class="glavni-rasp">
+  <!-- Korisnik -->
+  <form [formGroup]="changeUserForm" (ngSubmit)="changeUser()">
+    <div formGroupName="changeUser">
+     <div class="form-group row sam-div" style="margin-top: 20px;">
+       <label for="name"
+        class="col-sm-2 col-form-label">
+        {{!serbian?'Ime':'Name'}}
+      </label>
+       <div class="col-sm-10">
+         <input type="text"
+         class="form-control" 
+         id="name" 
+         [placeholder]="!serbian?'Licno Ime':'Name'"
+         formControlName="name">
+         
+       </div>
+     </div>
+     <div class="form-group row sam-div">
+       <label for="lastName" class="col-sm-2 col-form-label">{{!serbian?'Prezime':'Last name'}}</label>
+       <div class="col-sm-10">
+         <input type="text" class="form-control" id="lastName" [placeholder]="!serbian?'Prezime':'Last name'"
+         formControlName="lastName">
+       </div>
+     </div>
+     <div class="form-group row sam-div">
+         <label for="address" class="col-sm-2 col-form-label">{{!serbian?'Adresa':'Address'}}</label>
+         <div class="col-sm-10">
+           <input type="text" class="form-control" id="address" 
+           placeholder="{{!serbian?'Adresa':'Address'}}"
+           formControlName="address">
+         </div>
+     </div>
+     <div class="form-group row sam-div">
+      <label for="address" class="col-sm-2 col-form-label">{{!serbian?'Grad':'City'}}</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="city" 
+        placeholder="{{!serbian?'Grad':'City'}}"
+        formControlName="city">
+      </div>
+      </div>
+
+      <div class="form-group row sam-div">
+        <label for="address" class="col-sm-2 col-form-label">{{!serbian?'Država':'State'}}</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="state" 
+          placeholder="{{!serbian?'Država':'State'}}"
+          formControlName="state">
+        </div>
+      </div>
+
+     <div class="form-group row sam-div" >
+         <label for="phone" class="col-sm-2 col-form-label">{{!serbian?'Broj telefona':'Phone number'}}</label>
+         <div class="col-sm-10">
+           <input type="text" class="form-control" id="phone" placeholder="{{!serbian?'Broj telefona':'Phone number'}}"
+           formControlName="phone">
+         </div>
+     </div>
+
+     <div class="form-group row sam-div">
+      <label for="address" class="col-sm-2 col-form-label">{{!serbian?'Poštanski broj':'Zip code'}}</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="zip" 
+        placeholder="{{!serbian?'Poštanski broj':'Zip code'}}"
+        formControlName="zip">
+      </div>
+    </div>
+
+    <div class="form-group row sam-div">
+      <label for="password" class="col-sm-2 col-form-label">{{!serbian?'Trenutna lozinka':'Current password'}}</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="curr-password" placeholder="{{!serbian?'Trenutna lozinka':'Current password'}}"
+        formControlName="curr-password">
+      </div>
+  </div>
+
+    <div class="form-group row sam-div">
+      <label for="password" class="col-sm-2 col-form-label">{{!serbian?'Nova lozinka':'New password'}}</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="new-password" placeholder="{{!serbian?'Nova lozinka':'New password'}}"
+        formControlName="new-password">
+      </div>
+  </div>
+     <div class="form-group row sam-div">
+         <label for="confirm-password" class="col-sm-2 col-form-label">{{!serbian?'Potvrdi lozinku':'Confirm password'}}</label>
+         <div class="col-sm-10">
+           <input type="password" class="form-control" id="confirm-password" placeholder="{{!serbian?'Potvrdi lozinku':'Confirm password'}}"
+           formControlName="confirm-password">
+         </div>
+     </div>
+    </div>
+  </form>
+ 
+    
+    <!-- Submit -->
+        <div class="form-group row sam-div">
+          <div class="col-sm-10 dugmad">
+            <button [disabled]="!
+            changeUserForm.valid"
+            type="submit" class="btn btn-outline-green" (click)="changeUser()">{{!serbian?'Izmeni':'Change'}}</button>
+            <button type="button" class="btn btn-outline-warning" (click)="odustani()">{{!serbian?'Odustani':'Quit'}}</button>
+            <button type="button" class="btn btn-outline-red" (click)="deleteUser()">{{!serbian?'Obriši':'Delete'}}</button>
+          </div>
+        </div>
+
+</div>

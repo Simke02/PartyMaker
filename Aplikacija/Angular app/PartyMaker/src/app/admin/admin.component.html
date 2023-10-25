@@ -1,0 +1,101 @@
+<div class="row" style="width:100%; justify-content: center;">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div class="alert alert-danger" *ngIf="error">
+      <p>
+        {{error}}
+      </p>
+    </div>
+    <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+
+<div class="container">
+  <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3" style="min-width:400px ">
+            <div class="account-box">
+              <form #adminForm="ngForm" (ngSubmit)="onSubmit(adminForm)" *ngIf="!isLoading">
+                <!--div class="form-group "-->
+                    <div class="form-group" id="name_lastname">
+                      <input
+                        name="name" 
+                        type="name" 
+                        id="name"
+                        class="form-control" 
+                        ngModel 
+                        required 
+                        placeholder="{{!serbian?'Licno ime':'Name'}}"
+                      />
+                      <input
+                          name="lastName" 
+                          type="lastName" 
+                          id="lastName"
+                          class="form-control" 
+                          ngModel 
+                          required 
+                          placeholder="{{!serbian?'Prezime':'Last name'}}"
+                        />
+
+                        <input
+                          name="email" 
+                          type="email" 
+                          id="email"
+                          class="form-control" 
+                          ngModel 
+                          required 
+                          email
+                          placeholder="Email"
+                        />
+                      
+                    </div>
+                    
+                    
+                  
+                  <div class="form-group">
+                    <input
+                    placeholder="{{!serbian?'Lozinka':'Password'}}"
+                    type="password"  
+                    id="password" 
+                    class="form-control"
+                    ngModel
+                    name="password" 
+                    required
+                    minlength="6"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                    placeholder="{{!serbian?'Pozicija':'Position'}}"
+                    type="pozicija"  
+                    id="pozicija" 
+                    class="form-control"
+                    ngModel
+                    name="pozicija" 
+                    required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                    placeholder="{{!serbian?'JMBG':'Personal ID'}}"
+                    type="jmbg"  
+                    id="jmbg" 
+                    class="form-control"
+                    ngModel
+                    name="jmbg" 
+                    required
+                    minlength="13"
+                    />
+                  </div>
+                  <div class="dugmad">
+                    <button class="btn btn-outline-green dis-dugme" type="submit" [disabled]="!adminForm.valid">
+                      {{!serbian?'Kreiraj Novog Admina':'Create New Admin'}}
+                    </button> 
+                    <button type="button" class="btn btn-outline-red" (click)="odustani(adminForm)">{{!serbian?'Odustani':'Quit'}}</button>
+                  
+                   </div>
+                </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

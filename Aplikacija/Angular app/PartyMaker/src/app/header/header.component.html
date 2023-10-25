@@ -1,0 +1,8 @@
+<header *ngIf="router.url!=='/login'" class="back-img">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-black">
+            <h1 class="display-4 fw-bolder">{{ headerText }}</h1>
+            <p *ngIf="router.url==='/'" class="pod-naslov">{{!serbian?'Organizovanje žurki sa lakoćom':'Party organization with ease'}}</p>
+        </div>
+    </div>
+</header>

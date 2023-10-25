@@ -1,0 +1,85 @@
+<div class = "table-div">
+  <table class = "table">
+      <ng-container >
+          <thead>
+              <td>{{!serbian?'Naziv':'Name'}}</td>
+              <td>{{!serbian?'Kolicina':'Quantity'}}</td>
+              <td>{{!serbian?'Cena':'Price'}}</td>
+          </thead>
+          <tbody *ngFor="let proizvod of proizvodi; index as i">
+              <td>{{proizvod.naziv}}</td>
+              <td>{{kolicina[i]}}</td>
+              <td>{{proizvod.cena*kolicina[i]}}</td>
+          </tbody>
+      </ng-container>
+  </table>
+</div>
+<div class="glavni-rasp">
+    <form [formGroup]="orderForm" (ngSubmit)="DodajNarudzbinu()">
+       <div class="form-group row sam-div" style="margin-top: 20px;">
+         <label for="ime" class="col-sm-2 col-form-label">{{!serbian?'Ime':'Name'}}</label>
+         <div class="col-sm-10">
+           <input type="text" class="form-control" id="ime" placeholder="{{!serbian?'Ime':'Name'}}"
+           formControlName="ime">
+           <!-- <span *ngIf="!addProductForm.get('proizvod.naziv').valid && addProductForm.get('proizvod.naziv').touched"
+           class="help-block">Uneti validan naziv</span> -->
+         </div>
+       </div>
+       <div class="form-group row sam-div">
+         <label for="prezime" class="col-sm-2 col-form-label">{{!serbian?'Prezime':'Last name'}}</label>
+         <div class="col-sm-10">
+           <input type="text" class="form-control" id="prezime" placeholder="{{!serbian?'Prezime':'Last name'}}"
+           formControlName="prezime">
+         </div>
+       </div>
+       <div class="form-group row sam-div">
+           <label for="email" class="col-sm-2 col-form-label">Email</label>
+           <div class="col-sm-10">
+             <input type="email" class="form-control" id="email" placeholder="Email"
+             formControlName="email">
+           </div>
+       </div>
+       <div class="form-group row sam-div">
+           <label for="telefon" class="col-sm-2 col-form-label">{{!serbian?'Telefon':'Phone'}}</label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" id="telefon" placeholder="{{!serbian?'Telefon':'Phone'}}"
+             formControlName="telefon">
+           </div>
+       </div>
+       <div class="form-group row sam-div">
+           <label for="drzava" class="col-sm-2 col-form-label">{{!serbian?'Država':'State'}}</label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" id="drzava" placeholder="{{!serbian?'Država':'State'}}"
+             formControlName="drzava">
+           </div>
+       </div>
+       <div class="form-group row sam-div">
+           <label for="grad" class="col-sm-2 col-form-label">{{!serbian?'Grad':'City'}}</label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" id="grad" placeholder="{{!serbian?'Grad':'City'}}"
+             formControlName="grad">
+           </div>
+       </div>
+       <div class="form-group row sam-div">
+        <label for="postanskiBroj" class="col-sm-2 col-form-label">{{!serbian?'Poštanski broj':'Zip code'}}</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="postanskiBroj" placeholder="{{!serbian?'Poštanski Broj':'Zip code'}}"
+          formControlName="postanskiBroj">
+        </div>
+      </div>
+      <div class="form-group row sam-div">
+        <label for="adresa" class="col-sm-2 col-form-label">{{!serbian?'Adresa':'Address'}}</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="adresa" placeholder="{{!serbian?'Adresa':'Address'}}"
+          formControlName="adresa">
+        </div>
+      </div>
+      <div class="form-group row sam-div">
+        <div class="col-sm-10 dugmad">
+          <button [disabled]="!orderForm.valid"
+          type="submit" class="btn btn-outline-darker-pink">{{!serbian?'Poruči':'Order'}}</button>
+          <button type="button" class="btn btn-outline-warning" (click)="odustani()">{{!serbian?'Odustani':'Quit'}}</button>
+        </div>
+      </div>
+    </form>
+</div>

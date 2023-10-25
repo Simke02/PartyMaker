@@ -1,0 +1,64 @@
+  .glavni-rasp{
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+  }
+  
+  
+  .sam-div{
+    margin-bottom: 20px;
+  }
+  
+  
+  .dugmad
+  {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  #vrsta,#procenat,#tip
+  {
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 575px)
+  {
+  .glavni-rasp
+  {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin-bottom: 30px;
+  }
+  
+  .sam-div
+  {
+    margin-bottom: 10px;
+  }
+  
+  .form-group
+  {
+    margin: 0;
+  }
+  
+  .dugmad
+  {
+    margin-top: 10px;
+  }
+  
+  #vrsta,#procenat,#tip
+  {
+    margin-top: 0px;
+  }
+  }
+  
+  
+  input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+  
+  :host{
+    width: 100%;
+    max-width: 550px;
+  }

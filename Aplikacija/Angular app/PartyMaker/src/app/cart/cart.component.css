@@ -1,0 +1,209 @@
+:host{
+    width: 70%;
+}
+
+.sadrzaj
+{
+    text-align: end;
+}
+
+.root 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.product-details-containter
+{
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.cart-containter
+{
+    width: auto;
+    background-color: #EDDDE8;
+    border: 0px solid;
+    border-radius: 25px;
+    padding: 20px;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.btn-pozicija .minus
+{
+    font-size: 40px
+}
+
+.btn-pozicija
+{
+    background-color: transparent;
+    border: 0px solid;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.broj
+{
+    margin: 0;
+}
+
+.kolicina
+{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid;
+    height: 30px;
+    min-width: 85px;
+    max-width: 100px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    background-color: #fff;
+}
+
+.items {
+    overflow: auto;
+    height: 150px;
+    white-space: nowrap;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #9E5573;
+    border-radius: 25px;
+}
+
+.item .image {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+    width: 40%;
+}
+
+.item .image img {
+    margin: auto;
+}
+
+.item .text {
+    display: inline-block;
+    width: 60%;
+    padding: 5px 10px;
+}
+
+.button {
+    width: 100%;
+    padding: 7px;
+    margin: 5px 0;
+}
+
+.cart {
+    padding-left: 55px;
+    margin: 5px 0;
+    float: left;
+}
+
+.cart .sep {
+    height: 3px;
+    margin-bottom: 5px;
+}
+
+.slika 
+{
+    max-width: 150px;
+    max-height: 150px;
+}
+
+
+
+
+.empty-root
+{
+    text-align: center;
+}
+
+.row-cart
+{
+    display: block;
+    position: relative;
+    clear: both;
+}
+
+.empty-cart-wrapper
+{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.empty-cart
+{
+    background-image: url(../../assets/images/infos.ddcd4a171.png);
+    background-position: 0 -300px;
+    background-repeat: no-repeat;
+    width: 265px;
+    height: 187px;
+    margin: 0 auto 50px;
+}
+
+.cart-text
+{
+    font-size: larger;
+    margin-bottom: 20px;
+}
+
+.link
+{
+    color: #9E5573;
+}
+
+.product-name
+{
+    display: flex;
+    width: 100px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-containter
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.total-containter{
+    display: flex;
+    margin: 10px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 2vw;
+
+}
+
+.total-text
+{
+    font-size: 40px;
+    text-align: center;
+}
+
+.btn-total
+{
+    width: 100%;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}

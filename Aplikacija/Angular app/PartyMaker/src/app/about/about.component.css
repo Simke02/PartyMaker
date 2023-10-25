@@ -1,0 +1,97 @@
+:host
+{
+    width: 80%;
+}
+
+.container
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.prvi
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
+.drugi
+{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
+
+.parag1, .parag2, .parag3
+{
+    margin: 20px;
+}
+
+.slika
+{
+    max-width: 350px;
+    max-height: 350px;
+    min-width: 280px;
+    min-height: 280px;
+}
+
+.naslov-img
+{
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.naslov
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-width: 280px;
+}
+
+.naslov-text
+{
+    text-align: center;
+    margin: 30px;
+}
+
+
+@media (max-width: 800px)
+{
+    .prvi
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* align-items: center;
+        font-size: 20px; */
+    }
+
+    .drugi
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .naslov
+    {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        text-align: center;
+        margin: 0;
+    }
+
+    .naslov-text
+    {
+        margin: 0;
+    }
+}

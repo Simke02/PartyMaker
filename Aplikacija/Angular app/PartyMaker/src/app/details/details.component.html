@@ -1,0 +1,91 @@
+<section class="py-5" *ngIf="selected==='alkohol'">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" [src]="alk.slika" alt="..." /></div>
+            <div class="col-md-6">
+                <!-- <div class="small mb-1">SKU: BST-498</div> -->
+                <h1 class="display-5 fw-bolder">{{alk.naziv}}</h1>
+                <div class="fs-5 mb-5">
+                    <!-- <span class="text-decoration-line-through">$45.00</span> -->
+                    <span>{{!serbian?'Cena':'Price'}}: {{!serbian? alk.cena + ' RSD':alk.cena/100 + ' EUR'}}</span>
+                </div>
+                <p class="lead">{{alk.kratakOpis}}</p>
+                <p class="mb-1">{{!serbian?'Proizvođač':'Brand'}}: {{alk.proizvodjac}}</p>
+                <p class="mb-1">{{!serbian?'Vrsta alkohola':'Alcohol type'}}: {{vrstaAlk}}</p>
+                <p class="mb-1">{{!serbian?'Litraža':'Litrage'}}: {{alk.litraza}}</p>
+                <p class="mb-1">{{!serbian?'Procenat alkohola':'Alcohol percentage'}}: {{alk.procenatAlkohola}} ‰</p>
+                <br>
+                <div *ngIf="dostupan==true" class="d-flex">
+                    <input type="number" [(ngModel)]="kolicina" class="form-control text-center me-3" id="inputQuantity" type="num" style="max-width: 3rem" />
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button" id="1" [disabled]="alk.dostupnaKolicina<kolicina" (click)="priKliku()">
+                        <i class="bi-cart-fill me-1"></i>
+                        {{!serbian?'Dodaj u korpu':'Add to cart'}}
+                    </button>
+                </div>
+                <div *ngIf="dostupan==false" class="d-flex">
+                    <span>Nije na stanju</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5" *ngIf="selected==='bezalkohol'">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" [src]="bezalk.slika" alt="..." /></div>
+            <div class="col-md-6">
+                <!-- <div class="small mb-1">SKU: BST-498</div> -->
+                <h1 class="display-5 fw-bolder">{{bezalk.naziv}}</h1>
+                <div class="fs-5 mb-5">
+                    <!-- <span class="text-decoration-line-through">$45.00</span> -->
+                    <span>{{!serbian?'Cena':'Price'}}: {{!serbian? bezalk.cena + ' RSD':bezalk.cena/100 + ' EUR'}}</span>
+                </div>
+                <p class="lead">{{bezalk.kratakOpis}}</p>
+                <p class="mb-1">{{!serbian?'Proizvođač':'Brand'}}: {{bezalk.proizvodjac}}</p>
+                <p class="mb-1">{{!serbian?'Ukus':'Flavor'}}: {{ukusBezAlk}}</p>
+                <p class="mb-1">{{!serbian?'Litraža':'Litrage'}}: {{bezalk.litraza}}</p>
+                <p class="mb-1">{{!serbian?'Gaziran':'Carbonated'}}: {{gaziranoBezAlk}}</p>
+                <br>
+                <div *ngIf="dostupan==true" class="d-flex">
+                    <input type="number" [(ngModel)]="kolicina" class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button" [disabled]="bezalk.dostupnaKolicina<kolicina" id="1" (click)="priKliku()">
+                        <i class="bi-cart-fill me-1"></i>
+                        {{!serbian?'Dodaj u korpu':'Add to cart'}}
+                    </button>
+                </div>
+                <div *ngIf="dostupan==false" class="d-flex">
+                    <span>Nije na stanju</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5" *ngIf="selected==='rekvizit'">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" [src]="rekv.slika" alt="..." /></div>
+            <div class="col-md-6">
+                <!-- <div class="small mb-1">SKU: BST-498</div> -->
+                <h1 class="display-5 fw-bolder">{{rekv.naziv}}</h1>
+                <div class="fs-5 mb-5">
+                    <!-- <span class="text-decoration-line-through">$45.00</span> -->
+                    <span>{{!serbian?'Cena':'Price'}}: {{!serbian? rekv.cena + ' RSD':rekv.cena/100 + ' EUR'}}</span>
+                </div>
+                <p class="lead">{{rekv.kratakOpis}}</p>
+                <p class="mb-1">{{!serbian?'Proizvođač':'Brand'}}: {{rekv.proizvodjac}}</p>
+                <p class="mb-1">{{!serbian?'Tip rekvizita':'Item type'}}: {{tipRekv}}</p>
+                <br>
+                <div *ngIf="dostupan==true" class="d-flex">
+                    <input type="number" [(ngModel)]="kolicina" class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button" id="1" [disabled]="rekv.dostupnaKolicina<kolicina" (click)="priKliku()">
+                        <i class="bi-cart-fill me-1"></i>
+                        {{!serbian?'Dodaj u korpu':'Add to cart'}}
+                    </button>
+                </div>
+                <div *ngIf="dostupan==false" class="d-flex">
+                    <span>Nije na stanju</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
